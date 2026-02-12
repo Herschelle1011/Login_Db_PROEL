@@ -1,0 +1,72 @@
+﻿@page
+@model LoginandRegister.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_LoginLayout";
+}
+
+<div class="container-box-Login">
+
+    <div class="img-top">
+        <div class="Message">
+            <h2>CREATE YOUR<br>ACCOUNT</h2>
+            <p class="text">
+                Join us today and<br>
+                experience secure access
+            </p>
+        </div>
+    </div>
+
+    <div class="elements register-elements">
+
+        <h2 class="title">USER REGISTER</h2>
+        <p class="welcome-text">Create your account</p>
+
+        <form method="post">
+
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+            <span class="text-danger" asp-validation-for="Input.Email"></span>
+            <div class="input-with-icon">
+                <i class="bi bi-person-fill"></i>
+                <input class="form-control text-white"
+                       asp-for="Input.Email"
+                       placeholder="Username" />
+            </div>
+
+            <span class="text-danger" asp-validation-for="Input.Email"></span>
+            <div class="input-with-icon">
+                <i class="bi bi-envelope-fill"></i>
+                <input class="form-control text-white"
+                       asp-for="Input.Email"
+                       placeholder="Email" />
+            </div>
+
+            <span class="text-danger" asp-validation-for="Input.Password"></span>
+            <div class="input-with-icon">
+                <i class="bi bi-lock-fill"></i>
+                <input class="form-control text-white"
+                       asp-for="Input.Password"
+                       type="password"
+                       placeholder="Password" />
+            </div>
+
+            <span class="text-danger" asp-validation-for="Input.ConfirmPassword"></span>
+            <div class="input-with-icon">
+                <i class="bi bi-lock-fill"></i>
+                <input class="form-control text-white"
+                       asp-for="Input.ConfirmPassword"
+                       type="password"
+                       placeholder="Confirm Password" />
+            </div>
+
+            <a asp-page="/Account/Login">Already have an account?</a>
+
+            <button type="submit" class="btn btn-primary mt-3">
+                Register
+            </button>
+
+        </form>
+    </div>
+
+</div>

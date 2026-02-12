@@ -1,0 +1,197 @@
+﻿body {
+    min-height: 50vh;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    color: white;
+    width: 100%;
+}
+
+.container-box-Login {
+    margin: 10% auto;
+    border: 1px solid #ddd;
+    padding: 30px;
+    position: relative;
+    width: 500px;
+    border: none;
+    outline: none;
+    background-clip: padding-box;
+    box-shadow: none;
+    height: 700px;
+    border-radius: 5px;
+    background-color: #fff;
+    border-radius: 30px !important; /* smooth corners */
+    background: rgba(255, 255, 255, 0.15); /* semi-transparent glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
+    backdrop-filter: blur(15px); /* frosted glass blur */
+    -webkit-backdrop-filter: blur(15px); /* for Safari */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* soft shadow */
+    color: white; /* text color for contrast */
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+.text-danger {
+    font-size: 12px;
+}
+
+
+input {
+    color: white;
+}
+
+.form-control {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.2;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 13px;
+    background: rgba(255, 255, 255, 0.15); /* semi-transparent glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
+    backdrop-filter: blur(15px); /* frosted glass blur */
+    -webkit-backdrop-filter: blur(15px); /* for Safari */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* soft shadow */
+    color: white;
+    margin-bottom: 13px;
+    height: 42px;
+    transition: all 0.3s ease;
+}
+
+    .form-control::placeholder {
+        color: black;
+        opacity: 1;
+        color: white;
+    }
+
+
+
+.btn {
+    border-radius: 25px;
+    padding: 10px 10px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #C23A6B;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    position: relative;
+    background: linear-gradient( to bottom, #C77DFF 0%, /* light violet */
+    #8E2DE2 45%, /* rich purple */
+    #5A189A 100% /* deep indigo */
+    );
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    height: 52px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 0 #4A148C, /* depth edge */
+    0 12px 24px rgba(90, 24, 154, 0.45); /* glow */
+
+    transition: all 0.2s ease;
+}
+
+.title {
+    text-align: center;
+    align-items: center;
+    font-size: 35px;
+    color: white;
+    font-weight: bolder;
+    font-family: "Atkinson Hyperlegible Mono", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url("/backgroundcontroller.png");
+    background-size: cover;
+    background-position: center;
+    z-index: -999;
+}
+
+.welcome-text {
+    text-align: center;
+    color: white;
+    font-size: 15px;
+}
+
+.img-top {
+    background-image: url("/backkkground.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 30px;
+    position: absolute;
+    border: none;
+    outline: none;
+    transform: translateZ(0);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35vh;
+}
+
+.elements {
+    position: absolute;
+    top: 73%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 350px;
+    width: 400px;
+    padding: 10px;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+}
+
+.input-with-icon {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+    .input-with-icon i {
+        position: absolute;
+        top: 50%;
+        left: 14px;
+        transform: translateY(-50%);
+        color: pink;
+        font-size: 1.1rem;
+        pointer-events: none;
+    }
+
+    .input-with-icon input {
+        padding-left: 38px;
+        height: 40px;
+        border-radius: 25px;
+    }
+
+
+
+
+.Message {
+    font-size: 30px;
+    text-align: left;
+    color: white;
+    margin: 40px;
+    margin-top: 35px;
+    z-index: 2;
+}
+
+.text {
+    font-size: 15px;
+}
+
+h2 {
+    font-size: 30px;
+}
