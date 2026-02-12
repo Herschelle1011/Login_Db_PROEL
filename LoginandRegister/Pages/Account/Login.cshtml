@@ -1,48 +1,55 @@
 ﻿@page
 @model LoginandRegister.Pages.Account.LoginModel
+
 @{
     ViewData["Title"] = "Login";
     Layout = "_LoginLayout";
 }
 
-
 <div class="container-box-Login">
-	@* <div class="container-elements"> *@
 
-	<div class="img-top">
-		<div class="Message">
-			<h2>WELCOME TO THE<br>WEBSITE</h2>
-			<p class="text">Experience the products<br> with ease and legitimate</p>
-		</div>
-	</div>
+    <div class="img-top">
+        <div class="Message">
+            <h2>WELCOME TO THE<br>WEBSITE</h2>
+            <p class="text">Experience the products<br> with ease and legitimate</p>
+        </div>
+    </div>
 
-	<div class="elements">
+    <div class="elements">
 
-		<h2 class="title">USER LOGIN</h2>
-		<p class="welcome-text">Welcome Back</p>
-		<form method="post">
+        <h2 class="title">USER LOGIN</h2>
+        <p class="welcome-text">Welcome Back</p>
 
-			<div class="text-danger" asp-validation-summary="ModelOnly"></div>
-			<span class="text-danger" asp-validation-for="credential.Username"></span>
+        <form method="post">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
-			<div class="input-with-icon">
-				<i class="bi bi-person-fill"></i>
-				<input class="form-control text-white"
-					   asp-for="credential.Username"
-					   placeholder="Username" />
-			</div>
-			<span class="text-danger" asp-validation-for="credential.Password"></span>
+            @* Email *@
+            <span class="text-danger" asp-validation-for="credential.Email"></span>
+            <div class="input-with-icon">
+                <i class="bi bi-person-fill"></i>
+                <input class="form-control text-white"
+                       asp-for="credential.Email"
+                       placeholder="Email" />
+            </div>
 
-			<div class="input-with-icon text-white">
-				<i class="bi bi-lock-fill"></i>
-				<input class="form-control text-white"
-					   asp-for="credential.Password"
-					   type="password"
-					   placeholder="Password" />
-			</div>
-			<a asp-page="/Account/Register">Register here</a>
-			<button type="submit" class="btn btn-primary mt-3">Login</button>
-		</form>
-	</div>
+            @* Password *@
+            <span class="text-danger" asp-validation-for="credential.Password"></span>
+            <div class="input-with-icon">
+                <i class="bi bi-lock-fill"></i>
+                <input class="form-control text-white"
+                       asp-for="credential.Password"
+                       type="password"
+                       placeholder="Password" />
+            </div>
 
+            <a asp-page="/Account/Register">Register here</a>
+
+            <button type="submit" class="btn btn-primary mt-3">Login</button>
+        </form>
+
+    </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

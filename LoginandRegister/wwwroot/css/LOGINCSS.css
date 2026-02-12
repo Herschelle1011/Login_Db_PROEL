@@ -1,32 +1,78 @@
-﻿body {
-    min-height: 50vh;
-    display: grid;
-    place-items: center;
-    margin: 0;
-    color: white;
-    width: 100%;
+﻿/* ===============================
+   RESET & BASE
+================================ */
+* {
+    box-sizing: border-box;
 }
 
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #0f0f1a;
+}
+
+/* ===============================
+   BACKGROUND IMAGE
+================================ */
+.image-bg {
+    position: fixed;
+    inset: 0;
+    background-image: url("/backgroundcontroller.png");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+/* ===============================
+   LOGIN CONTAINER (GLASS)
+================================ */
 .container-box-Login {
-    margin: 10% auto;
-    border: 1px solid #ddd;
-    padding: 30px;
-    position: relative;
     width: 500px;
-    border: none;
-    outline: none;
-    background-clip: padding-box;
-    box-shadow: none;
+    max-width: 90%;
+    margin: 0 auto;
     height: 700px;
-    border-radius: 5px;
-    background-color: #fff;
-    border-radius: 30px !important; /* smooth corners */
-    background: rgba(255, 255, 255, 0.15); /* semi-transparent glass effect */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
-    backdrop-filter: blur(15px); /* frosted glass blur */
-    -webkit-backdrop-filter: blur(15px); /* for Safari */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* soft shadow */
-    color: white; /* text color for contrast */
+    padding: 30px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+/* ===============================
+   TOP IMAGE controller
+================================ */
+.img-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 35%;
+    width: 100%;
+    background-image: url("/backgroundcontroller.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px 30px 0 0;
+}
+
+/* ===============================
+   TITLE & TEXT
+================================ */
+.title {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.welcome-text {
+    text-align: center;
+    font-size: 15px;
 }
 
 label {
@@ -35,129 +81,50 @@ label {
 
 .text-danger {
     font-size: 12px;
+    color: #ffb3b3;
 }
 
-
-input {
-    color: white;
+/* ===============================
+   FORM AREA
+================================ */
+.elements {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
 }
 
+/* ===============================
+   INPUTS
+================================ */
 .form-control {
     width: 100%;
-    font-size: 14px;
-    line-height: 1.2;
-    padding: 6px 12px;
-    border-radius: 20px;
-    margin-bottom: 13px;
-    background: rgba(255, 255, 255, 0.15); /* semi-transparent glass effect */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* subtle border */
-    backdrop-filter: blur(15px); /* frosted glass blur */
-    -webkit-backdrop-filter: blur(15px); /* for Safari */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* soft shadow */
-    color: white;
-    margin-bottom: 13px;
     height: 42px;
-    transition: all 0.3s ease;
+    padding: 0 12px 0 40px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s ease;
 }
 
     .form-control::placeholder {
-        color: black;
-        opacity: 1;
-        color: white;
+        color: rgba(255, 255, 255, 0.8);
     }
 
-
-
-.btn {
-    border-radius: 25px;
-    padding: 10px 10px;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    background-color: #C23A6B;
-    color: white;
-    font-weight: bold;
-    width: 100%;
-    position: relative;
-    background: linear-gradient( to bottom, #C77DFF 0%, /* light violet */
-    #8E2DE2 45%, /* rich purple */
-    #5A189A 100% /* deep indigo */
-    );
-    color: #fff;
-    border: none;
-    border-radius: 999px;
-    height: 52px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    box-shadow: 0 6px 0 #4A148C, /* depth edge */
-    0 12px 24px rgba(90, 24, 154, 0.45); /* glow */
-
-    transition: all 0.2s ease;
-}
-
-.title {
-    text-align: center;
-    align-items: center;
-    font-size: 35px;
-    color: white;
-    font-weight: bolder;
-    font-family: "Atkinson Hyperlegible Mono", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
-}
-
-.image-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-image: url("/backgroundcontroller.png");
-    background-size: cover;
-    background-position: center;
-    z-index: -999;
-}
-
-.welcome-text {
-    text-align: center;
-    color: white;
-    font-size: 15px;
-}
-
-.img-top {
-    background-image: url("/backkkground.png");
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 30px;
-    position: absolute;
-    border: none;
-    outline: none;
-    transform: translateZ(0);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 35vh;
-}
-
-.elements {
-    position: absolute;
-    top: 73%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 350px;
-    width: 400px;
-    padding: 10px;
-}
-
-input {
-    background: rgba(255, 255, 255, 0.15) !important;
-    color: white !important;
-}
-
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: white !important;
+    }
+/* ===============================
+   INPUT WITH ICON
+================================ */
 .input-with-icon {
     position: relative;
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
 }
 
     .input-with-icon i {
@@ -167,25 +134,41 @@ input {
         transform: translateY(-50%);
         color: pink;
         font-size: 1.1rem;
-        pointer-events: none;
     }
 
-    .input-with-icon input {
-        padding-left: 38px;
-        height: 40px;
-        border-radius: 25px;
+/* ===============================
+   BUTTON
+================================ */
+.btn {
+    width: 100%;
+    height: 52px;
+    border-radius: 999px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: white;
+    background: linear-gradient( to bottom, #C77DFF 0%, #8E2DE2 45%, #5A189A 100% );
+    box-shadow: 0 6px 0 #4A148C, 0 12px 24px rgba(90, 24, 154, 0.45);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+    .btn:hover {
+        transform: translateY(-2px);
     }
 
+    .btn:active {
+        transform: translateY(2px);
+        box-shadow: 0 3px 0 #4A148C;
+    }
 
-
-
+/* ===============================
+   EXTRA TEXT
+================================ */
 .Message {
     font-size: 30px;
-    text-align: left;
-    color: white;
-    margin: 40px;
-    margin-top: 35px;
-    z-index: 2;
+    margin: 35px 40px;
 }
 
 .text {

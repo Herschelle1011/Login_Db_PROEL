@@ -1,25 +1,22 @@
 using LoginandRegister.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+using LoginandRegister.Model;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Claims;
 
 namespace LoginandRegister.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        public void OnGet()
-        {
-        }
+        private readonly ApplicationDbContext _db;
 
-        private readonly UserManager<IdentityUser> _userManager;
-
-        public RegisterModel(UserManager<IdentityUser> userManager)
+        public RegisterModel(ApplicationDbContext db)
         {
-            _userManager = userManager;
+            _db = db;
         }
 
         [BindProperty]
@@ -27,18 +24,22 @@ namespace LoginandRegister.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Email is required")]
+            [EmailAddress(ErrorMessage = "Invalid email format")]
+            [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]{2,}$",
+         ErrorMessage = "Email must have a valid domain and TLD")]
             public string Email { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [NotMapped]
             [Required]
-            [DataType(DataType.Password)]
-            [Compare("Password", ErrorMessage = "Passwords do not match.")]
             public string ConfirmPassword { get; set; }
+        }
+
+        public void OnGet()
+        {
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -46,23 +47,25 @@ namespace LoginandRegister.Pages.Account
             if (!ModelState.IsValid)
                 return Page();
 
-            var user = new IdentityUser
+            // Check if user already exists
+            if (await _db.Users.AnyAsync(u => u.Email == Input.Email))
             {
-                UserName = Input.Email,
-                Email = Input.Email
-            };
-
-            var result = await _userManager.CreateAsync(user, Input.Password);
-
-            if (result.Succeeded)
-            {
-                return RedirectToPage("/Account/Login");
+                ModelState.AddModelError(string.Empty, "User already exists.");
+                return Page();
             }
 
-            foreach (var error in result.Errors)
-                ModelState.AddModelError("", error.Description);
+            // Create new user (plain password)
+            var user = new User
+            {
+                Email = Input.Email,
+                Password = Input.Password, // plain password (not hashed)
+                ConfirmPassword = Input.ConfirmPassword
+            };
 
-            return Page();
+            _db.Users.Add(user);
+            await _db.SaveChangesAsync();
+
+            return RedirectToPage("/Account/Login");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿@page
 @model LoginandRegister.Pages.Account.RegisterModel
+
 @{
     ViewData["Title"] = "Register";
     Layout = "_LoginLayout";
@@ -10,10 +11,7 @@
     <div class="img-top">
         <div class="Message">
             <h2>CREATE YOUR<br>ACCOUNT</h2>
-            <p class="text">
-                Join us today and<br>
-                experience secure access
-            </p>
+            <p class="text">Join us today and<br> experience secure access</p>
         </div>
     </div>
 
@@ -23,25 +21,18 @@
         <p class="welcome-text">Create your account</p>
 
         <form method="post">
-
             <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
+            @* Email *@
             <span class="text-danger" asp-validation-for="Input.Email"></span>
             <div class="input-with-icon">
                 <i class="bi bi-person-fill"></i>
                 <input class="form-control text-white"
                        asp-for="Input.Email"
-                       placeholder="Username" />
-            </div>
-
-            <span class="text-danger" asp-validation-for="Input.Email"></span>
-            <div class="input-with-icon">
-                <i class="bi bi-envelope-fill"></i>
-                <input class="form-control text-white"
-                       asp-for="Input.Email"
                        placeholder="Email" />
             </div>
 
+            @* Password *@
             <span class="text-danger" asp-validation-for="Input.Password"></span>
             <div class="input-with-icon">
                 <i class="bi bi-lock-fill"></i>
@@ -51,6 +42,7 @@
                        placeholder="Password" />
             </div>
 
+            @* Confirm Password *@
             <span class="text-danger" asp-validation-for="Input.ConfirmPassword"></span>
             <div class="input-with-icon">
                 <i class="bi bi-lock-fill"></i>
@@ -62,11 +54,12 @@
 
             <a asp-page="/Account/Login">Already have an account?</a>
 
-            <button type="submit" class="btn btn-primary mt-3">
-                Register
-            </button>
-
+            <button type="submit" class="btn btn-primary mt-3">Register</button>
         </form>
-    </div>
 
+    </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
